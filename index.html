@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="js/script.js"></script>
+    <title>vue-boolzapp</title>
+  </head>
+  <body>
+    <div class="background-line"></div>
+    <div id="app">
+      <div class="main-cont">
+
+        <div class="contact-cont">
+          <div class="contact-head"></div>
+          <div class="contact-filter"></div>
+
+          <div class="contacts">
+            <div v-for="(contact, index) in contacts">
+
+              <div @click="messageGen(index)" class="contact">
+                <img :src="'img/' + contact.avatar" alt="Profile image" class="contact-img">
+                <div class="info-cont">
+                  <h4>{{ contact.name }}</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="message-cont">
+
+          <div class="message-head"></div>
+
+          <div class="message-main">
+              
+            <div v-for="elem in activeChat">
+
+              <div v-if="elem.status == 'sent'" class="user-message-cont">
+                <div class="message-cloud-v2">
+                  {{ elem.text }}
+                </div>
+              </div>
+              <div v-else class="speker-message-cont">
+                <div class="message-cloud-v1">
+                  {{ elem.text }}
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="message-bottom"></div>
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>

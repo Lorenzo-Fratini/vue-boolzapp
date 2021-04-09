@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Montserrat';
+  background: #d9dbd4;
+}
+
+.background-line {
+  width: 100%;
+  height: 15vh;
+  background-color: #009688;
+}
+
+.main-cont {
+  width: 90vw;
+  height: 90vh;
+  background-color: hsl(210, 17%, 98%);
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.6);
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.contact-cont {
+  width: 25%;
+  height: 100%;
+  border-right: 1px solid #ccc;
+}
+
+.message-cont {
+  width: 75%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  background-color: #e5ddd5;
+  background-image: url("../img/bg-chat.png");
+}
+
+.contact-head,
+.message-head,
+.message-bottom {
+  width: 100%;
+  min-height: 70px;
+  background-color: #ededed;
+  border-bottom: 1px solid #ccc;
+}
+
+.contact-filter {
+  width: 100%;
+  height: 70px;
+  background: #eee;
+}
+
+.contacts {
+  overflow: auto;
+}
+
+.contact {
+  width: 100%;
+  height: 90px;
+  padding: 5px 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-bottom: 0.8px solid #ccc;
+}
+
+.contact:hover {
+  background: #ddd;
+}
+
+.contact-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+}
+
+.info-cont {
+  margin-left: 10px;
+}
+
+.message-main {
+  width: 100%;
+  padding: 20px;
+  overflow: auto;
+  flex-grow: 1;
+  background-color: rgba(229, 221, 213, 0.9);
+}
+
+.user-message-cont {
+  display: flex;
+  margin-bottom: 15px;
+  justify-content: right;
+}
+
+.speker-message-cont {
+  display: flex;
+  margin-bottom: 15px;
+  justify-content: left;
+}
+
+.message-cloud-v1,
+.message-cloud-v2 {
+	max-width: 60%;
+  padding: 10px 20px;
+  word-wrap: break-word;
+	position: relative;
+	transform: rotate(0);
+}
+	
+.message-cloud-v1:before,
+.message-cloud-v2::before {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-bottom: 10px solid transparent;
+}
+
+.message-cloud-v1{
+  background-color: #fff;
+  border-radius: 0 10px 10px 10px;
+}
+
+.message-cloud-v1:before {
+  right: 100%;
+  top: 0;
+  border-right: 10px solid #fff;
+}
+
+.message-cloud-v2 {
+  background-color: #dcf8c6;
+  border-radius: 10px 0 10px 10px;
+}
+
+.message-cloud-v2:before {
+  left: 100%;
+  top: 0;
+  border-left: 10px solid #dcf8c6;
+}
