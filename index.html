@@ -54,7 +54,14 @@
 
           </div>
 
-          <div class="message-bottom"></div>
+          <div class="message-bottom">
+            <i class="far fa-grin"></i>
+            <i class="fas fa-paperclip"></i>
+
+            <input type="text" class="input-bottom" v-model="message" @keyup.enter="newMessageGen(message)" placeholder=" Scrivi un messaggio">
+
+            <i class="fas fa-microphone"></i>
+          </div>
         </div>
 
       </div>

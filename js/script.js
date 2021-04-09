@@ -7,6 +7,12 @@ function init() {
     data: {
 
       activeChat: '',
+      message: '',
+      newMessage: {},
+      defaultAnswere: {
+        text: 'Ok',
+        status: 'received'
+      },
 
       contacts: [
         {
@@ -101,7 +107,23 @@ function init() {
       messageGen: function(index) {
 
         this.activeChat = this.contacts[index].messages;
+        console.log(this.activeChat);
+      },
 
+      newMessageGen: function(message) {
+
+        this.newMessage = {text: this.message, status: 'sent'};
+
+        this.activeChat.push(this.newMessage);
+        this.message = '';
+
+        
+
+        setTimeout(() => {
+
+          this.activeChat.push(this.defaultAnswere);
+          
+        }, 1000);
       }
 
     }
