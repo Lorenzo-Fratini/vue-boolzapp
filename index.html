@@ -15,15 +15,19 @@
 
         <div class="contact-cont">
           <div class="contact-head"></div>
-          <div class="contact-filter"></div>
+
+          <div class="contact-filter">
+            <input type="text" class="filter" v-model="searchUsers" @keyup.enter="searchUser" placeholder="Cerca o inizia una nuova chat">
+          </div>
 
           <div class="contacts">
             <div v-for="(contact, index) in contacts">
-
-              <div @click="messageGen(index)" class="contact">
-                <img :src="'img/' + contact.avatar" alt="Profile image" class="contact-img">
-                <div class="info-cont">
-                  <h4>{{ contact.name }}</h4>
+              <div v-if="contact.visible==true">
+                <div @click="messageGen(index)" class="contact">
+                  <img :src="'img/' + contact.avatar" alt="Profile image" class="contact-img">
+                  <div class="info-cont">
+                    <h4>{{ contact.name }}</h4>
+                  </div>
                 </div>
               </div>
             </div>

@@ -6,6 +6,9 @@ function init() {
 
     data: {
 
+      searchUsers: '',
+      allUser: [],
+
       activeChat: '',
       message: '',
       newMessage: {},
@@ -82,7 +85,7 @@ function init() {
           ],
         },
         {
-          name: 'Luisa',
+          name: 'Chiara',
           avatar: 'female2.png',
           visible: true,
           messages: [
@@ -124,11 +127,34 @@ function init() {
           this.activeChat.push(this.defaultAnswere);
           
         }, 1000);
-      }
+      },
 
+      searchUser: function() {
+
+        if (this.searchUsers == '') {
+          
+          this.contacts.forEach(contact => {
+           
+            contact['visible'] = true;
+          });
+        } else {
+
+          
+          this.contacts.forEach(contact => {
+
+            const currentContact = contact['name'].toLowerCase();
+            const currentUserSearch = this.searchUsers.toLowerCase();
+
+            if (!currentContact.startsWith(currentUserSearch)) {
+              
+              contact['visible'] = false;
+            }
+            
+          });
+        }
+      }
     }
   });
-
 }
 
 document.addEventListener('DOMContentLoaded', init);
