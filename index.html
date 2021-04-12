@@ -72,15 +72,23 @@
           </div>
 
           <div class="message-main">
-            <div v-for="mess in activeUser.messages">
+            <div v-for="(mess, index) in activeUser.messages">
               
               <div :class="mess.status == 'sent' ? 'user-message-cont' : 'speker-message-cont'">
-                <div :class="mess.status == 'sent' ? 'message-cloud-v2' : 'message-cloud-v1'">
+                <div :class="mess.text == 'Hai eliminato questo messaggio' ? 'message-cloud deleteMessage' : 'message-cloud'">
                   {{ mess.text }}
                     <div class="message-hour">
                       {{ mess.hour }}
                     </div>
-                    <i class="fas fa-chevron-down message-icon"></i>
+                    <div @click="showOptions(index)">
+                      <i class="fas fa-chevron-down message-icon"></i>
+                    </div>
+                    <div :class="'options-menu ' +  mess.optionsDisplay">
+                      <ul>
+                        <li>Info messaggio</li>
+                        <li @click="deleteMessage(index)">Elimina messaggio</li>
+                      </ul>
+                    </div>
                 </div>
               </div>
 
@@ -95,7 +103,9 @@
           </div>
         </div>
 
-        <div :class="'init-message-cont' +  displayClass"></div>
+        <div :class="'init-message-cont' +  displayClass">
+          <img src="img/default-bg.png" :class="displayClass" alt="">
+        </div>
 
       </div>
     </div>

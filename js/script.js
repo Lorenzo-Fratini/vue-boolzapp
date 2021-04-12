@@ -30,18 +30,21 @@ function init() {
           visible: true,
           messages: [
             {
+              optionsDisplay: '',
               date: '10/01/2020',
               hour: '15:30',
               text: 'Hai portato a spasso il cane?',
               status: 'sent'
             },
             {
+              optionsDisplay: '',
               date: '10/01/2020',
               hour: '15:50',
               text: 'Ricordati di dargli da mangiare',
               status: 'sent'
             },
             {
+              optionsDisplay: '',
               date: '10/01/2020',
               hour: '16:15',
               text: 'Tutto fatto!',
@@ -56,18 +59,21 @@ function init() {
           visible: true,
           messages: [
               {
+                optionsDisplay: '',
                 date: '20/03/2020',
                 hour: '16:30',
                 text: 'Ciao come stai?',
                 status: 'sent'
               },
               {
+                optionsDisplay: '',
                 date: '20/03/2020',
                 hour: '16:30',
                 text: 'Bene grazie! Stasera ci vediamo?',
                 status: 'received'
               },
               {
+                optionsDisplay: '',
                 date: '20/03/2020',
                 hour: '16:35',
                 text: 'Mi piacerebbe ma devo andare a fare la spesa.',
@@ -82,18 +88,21 @@ function init() {
           visible: true,
           messages: [
               {
+                optionsDisplay: '',
                 date: '28/03/2020',
                 hour: '10:10',
                 text: 'La Marianna va in campagna',
                 status: 'received'
               },
               {
+                optionsDisplay: '',
                 date: '28/03/2020',
                 hour: '10:20',
                 text: 'Sicura di non aver sbagliato chat?',
                 status: 'sent'
               },
               {
+                optionsDisplay: '',
                 date: '28/03/2020',
                 hour: '16:15',
                 text: 'Ah scusa!',
@@ -108,12 +117,14 @@ function init() {
           visible: true,
           messages: [
               {
+                optionsDisplay: '',
                 date: '10/01/2020',
                 hour: '15:30',
                 text: 'Lo sai che ha aperto una nuova pizzeria?',
                 status: 'sent'
               },
               {
+                optionsDisplay: '',
                 date: '10/01/2020',
                 hour: '15:50',
                 text: 'Si, ma preferirei andare al cinema',
@@ -147,9 +158,11 @@ function init() {
         const time = this.thisHour();
 
         this.newMessage = {
+          optionsDisplay: '',
+          date: '',
+          hour: time,
           text: this.message,
-          status: 'sent',
-          hour: time
+          status: 'sent'
         };
 
         this.activeUser.messages.push(this.newMessage);
@@ -201,11 +214,25 @@ function init() {
             
           });
         }
+      },
+
+      showOptions: function(index) {
+        
+        const messages = this.activeUser.messages;
+        const message = messages[index];
+
+        message.optionsDisplay = 'options-block';
+      },
+
+      deleteMessage: function(index) {
+        const messages = this.activeUser.messages;
+        const message = messages[index];
+
+        message.optionsDisplay = '';
+        message.text = 'Hai eliminato questo messaggio';
       }
     }
   });
 }
 
 document.addEventListener('DOMContentLoaded', init);
-
-// new Date().getHours() + ":" + today.getMinutes()
