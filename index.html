@@ -25,6 +25,16 @@
               </div>
           </div>
 
+          <div class="notification">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+              <path fill="currentColor" d="M24.154 2C11.919 2 2 11.924 2 24.165S11.919 46.33 24.154 46.33s22.154-9.924 22.154-22.165S36.389 2 24.154 2zm-.744 15.428v-.618c0-.706.618-1.324 1.324-1.324s1.323.618 1.323 1.324v.618c2.559.618 4.412 2.823 4.412 5.559v3.176l-8.294-8.294a5.056 5.056 0 0 1 1.235-.441zm1.323 15.706a1.77 1.77 0 0 1-1.765-1.765h3.529a1.768 1.768 0 0 1-1.764 1.765zm7.236-.883l-1.765-1.765H17.233v-.882l1.765-1.765v-4.853a5.56 5.56 0 0 1 .794-2.912l-2.559-2.559 1.147-1.147 14.735 14.736-1.146 1.147z"></path>
+            </svg>
+            <div class="info-cont">
+              <h4>Ricevi notifiche di nuovi messaggi</h4>
+              <a href="#">Attiva notifiche desktop</a>
+            </div>
+          </div>
+
           <div class="contact-filter">
             <input type="text" class="filter" v-model="searchUsers" @keyup.enter="searchUser" placeholder="Cerca o inizia una nuova chat">
           </div>
@@ -52,23 +62,28 @@
               <img :src="'img/' + activeUser.avatar" alt="Profile image" class="contact-img">
               <div class="active-user-info">
                 <h4>{{ activeUser.name }}</h4>
-                <span>Ultimo accesso {{ activeUser.lastEntry }}</span>
+                <span>{{ activeUser.lastEntry }}</span>
               </div>
+            </div>
+            <div class="icon-message-head">
+              <i class="fas fa-search"></i>
+              <i class="fas fa-ellipsis-v"></i>
             </div>
           </div>
 
           <div class="message-main">
-            <div v-for="elem in activeUser.messages">
-              <div v-if="elem.status == 'sent'" class="user-message-cont">
-                <div class="message-cloud-v2">
-                  {{ elem.text }}
+            <div v-for="mess in activeUser.messages">
+              
+              <div :class="mess.status == 'sent' ? 'user-message-cont' : 'speker-message-cont'">
+                <div :class="mess.status == 'sent' ? 'message-cloud-v2' : 'message-cloud-v1'">
+                  {{ mess.text }}
+                    <div class="message-hour">
+                      {{ mess.hour }}
+                    </div>
+                    <i class="fas fa-chevron-down message-icon"></i>
                 </div>
               </div>
-              <div v-else class="speker-message-cont">
-                <div class="message-cloud-v1">
-                  {{ elem.text }}
-                </div>
-              </div>
+
             </div>
           </div>
 

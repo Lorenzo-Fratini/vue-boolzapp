@@ -18,13 +18,22 @@ i {
   cursor: pointer;
   color: #999;
   font-weight: 100;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
+}
+
+a {
+  text-decoration: none;
 }
 
 h4 {
   font-weight: normal;
   color: #000;
   font-size: 1.1rem;
+}
+
+h5 {
+  font-weight: normal;
+  color: #000;
 }
 
 input {
@@ -90,8 +99,7 @@ input.filter {
 .message-head,
 .message-bottom {
   width: 100%;
-  min-height: 60px;
-  
+  height: 60px;
   background-color: #ededed;
   border-bottom: 1px solid #ccc;
   display: flex;
@@ -104,6 +112,33 @@ input.filter {
   padding: 5px 10px; 
 }
 
+.notification {
+  width: 100%;
+  height: 80px;
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: #9de1fe;
+  display: flex;
+  align-items: center;
+}
+
+.notification h4 {
+  font-size: 1rem;
+}
+
+.notification a {
+  color: #777;
+}
+
+.notification a:hover {
+  color: #555;
+  text-decoration: underline;
+}
+
+.notification svg {
+  color: #fff;
+}
+
 .message-bottom {
   padding: 10px 30px;
 }
@@ -112,6 +147,12 @@ input.filter {
   width: 30%;
   display: flex;
   justify-content: space-between;
+}
+
+.icon-message-head {
+  width: 15%;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .contact-filter {
@@ -180,7 +221,7 @@ input.filter {
 .message-cloud-v1,
 .message-cloud-v2 {
 	max-width: 60%;
-  padding: 10px 20px;
+  padding: 10px 45px 10px 20px;
   word-wrap: break-word;
   color: #000;
 	position: relative;
@@ -218,8 +259,29 @@ input.filter {
   border-left: 10px solid #dcf8c6;
 }
 
+.message-hour {
+  font-size: 0.6rem;
+  color: #555;
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+}
+
 .input-bottom {
   width: 80%;
+}
+
+.message-icon {
+  font-size: 1rem;
+  display: none;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.message-cloud-v1:hover .message-icon,
+.message-cloud-v2:hover .message-icon{
+  display: block;
 }
 
 .init-message-cont {
