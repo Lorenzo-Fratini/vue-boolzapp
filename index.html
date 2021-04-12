@@ -13,8 +13,17 @@
     <div id="app">
       <div class="main-cont">
 
+        <!-- left-cont -->
         <div class="contact-cont">
-          <div class="contact-head"></div>
+          
+          <div class="contact-head">
+              <img src="img/me.jpeg" alt="avatar" class="contact-img">
+              <div class="icon-cont-head">
+                <i class="fas fa-circle-notch"></i>
+                <i class="fas fa-comment-alt"></i>
+                <i class="fas fa-ellipsis-v"></i>
+              </div>
+          </div>
 
           <div class="contact-filter">
             <input type="text" class="filter" v-model="searchUsers" @keyup.enter="searchUser" placeholder="Cerca o inizia una nuova chat">
@@ -22,7 +31,7 @@
 
           <div class="contacts">
             <div v-for="(contact, index) in contacts">
-              <div v-if="contact.visible==true">
+              <div v-if="contact.visible == true">
                 <div @click="messageGen(index)" class="contact">
                   <img :src="'img/' + contact.avatar" alt="Profile image" class="contact-img">
                   <div class="info-cont">
@@ -35,14 +44,21 @@
 
         </div>
 
+        <!-- right-cont -->
         <div class="message-cont">
 
-          <div class="message-head"></div>
+          <div class="message-head">
+            <div class="active-user">
+              <img :src="'img/' + activeUser.avatar" alt="Profile image" class="contact-img">
+              <div class="active-user-info">
+                <h4>{{ activeUser.name }}</h4>
+                <span>Ultimo accesso {{ activeUser.lastEntry }}</span>
+              </div>
+            </div>
+          </div>
 
           <div class="message-main">
-              
-            <div v-for="elem in activeChat">
-
+            <div v-for="elem in activeUser.messages">
               <div v-if="elem.status == 'sent'" class="user-message-cont">
                 <div class="message-cloud-v2">
                   {{ elem.text }}
@@ -53,20 +69,18 @@
                   {{ elem.text }}
                 </div>
               </div>
-
             </div>
-
           </div>
 
           <div class="message-bottom">
             <i class="far fa-grin"></i>
             <i class="fas fa-paperclip"></i>
-
             <input type="text" class="input-bottom" v-model="message" @keyup.enter="newMessageGen(message)" placeholder=" Scrivi un messaggio">
-
             <i class="fas fa-microphone"></i>
           </div>
         </div>
+
+        <div :class="'init-message-cont' +  displayClass"></div>
 
       </div>
     </div>

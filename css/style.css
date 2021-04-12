@@ -8,7 +8,9 @@
 body {
   width: 100vw;
   height: 100vh;
-  font-family: 'Montserrat';
+  font-size: 14px;
+  color: #555;
+  font-family: 'Helvetica';
   background: #d9dbd4;
 }
 
@@ -16,7 +18,13 @@ i {
   cursor: pointer;
   color: #999;
   font-weight: 100;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+}
+
+h4 {
+  font-weight: normal;
+  color: #000;
+  font-size: 1.1rem;
 }
 
 input {
@@ -34,6 +42,10 @@ input.filter {
   width: 95%;
 }
 
+.display-none {
+  display: none;
+}
+
 .background-line {
   width: 100%;
   height: 15vh;
@@ -42,7 +54,7 @@ input.filter {
 
 .main-cont {
   width: 90vw;
-  height: 90vh;
+  height: 95vh;
   background-color: hsl(210, 17%, 98%);
   box-shadow: 0 1px 1px 0 rgba(0,0,0,0.6);
   display: flex;
@@ -53,7 +65,7 @@ input.filter {
 }
 
 .contact-cont {
-  width: 25%;
+  width: 30%;
   height: 100%;
   border-right: 1px solid #ccc;
 }
@@ -65,7 +77,7 @@ input.filter {
 }
 
 .message-cont {
-  width: 75%;
+  width: 70%;
   height: 100%;
   display: flex;
   justify-content: space-between;
@@ -78,16 +90,28 @@ input.filter {
 .message-head,
 .message-bottom {
   width: 100%;
-  min-height: 70px;
+  min-height: 60px;
+  
   background-color: #ededed;
   border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact-head,
+.message-head {
+  padding: 5px 10px; 
 }
 
 .message-bottom {
   padding: 10px 30px;
+}
+
+.icon-cont-head {
+  width: 30%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
 .contact-filter {
@@ -102,7 +126,7 @@ input.filter {
 
 .contact {
   width: 100%;
-  height: 90px;
+  height: 70px;
   padding: 5px 10px;
   cursor: pointer;
   display: flex;
@@ -115,8 +139,8 @@ input.filter {
 }
 
 .contact-img {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   border-radius: 100%;
 }
 
@@ -129,13 +153,22 @@ input.filter {
   padding: 20px;
   overflow: auto;
   flex-grow: 1;
-  background-color: rgba(229, 221, 213, 0.9);
+  background: rgba(229, 221, 213, 0.9);
 }
 
 .user-message-cont {
   display: flex;
   margin-bottom: 15px;
   justify-content: right;
+}
+
+.active-user {
+  display: flex;
+  align-items: center;
+}
+
+.active-user-info {
+  margin-left: 10px;
 }
 
 .speker-message-cont {
@@ -149,6 +182,7 @@ input.filter {
 	max-width: 60%;
   padding: 10px 20px;
   word-wrap: break-word;
+  color: #000;
 	position: relative;
 	transform: rotate(0);
 }
@@ -186,4 +220,13 @@ input.filter {
 
 .input-bottom {
   width: 80%;
+}
+
+.init-message-cont {
+  width: 70%;
+  height: 100%;
+  background-color: #fff;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
