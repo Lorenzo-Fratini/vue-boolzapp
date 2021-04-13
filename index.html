@@ -48,10 +48,10 @@
                   <div class="info-cont">
                     <h4>{{ contact.name }}</h4>
                     <span>
-                      {{ contact.messages[(contact.messages.length - 1)].text }}
+                      {{ lastMessage(index) }}
                     </span>
                     <span class="last-message-date">
-                      {{ contact.messages[(contact.messages.length - 1)].hour }}
+                      {{ lastHour(index) }}
                     </span>
                   </div>
                 </div>

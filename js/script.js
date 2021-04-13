@@ -14,8 +14,6 @@ function init() {
 
       displayClass: '',
 
-      lastMessage: '',
-
       contacts: [
         {
           name: 'Marco',
@@ -221,6 +219,20 @@ function init() {
         this.defaultAnswereGen();
       },
 
+      lastMessage: function(index) {
+
+        const contact = this.contacts[index];
+
+        return contact.messages[(contact.messages.length - 1)].text;
+      },
+
+      lastHour: function(index) {
+
+        const contact = this.contacts[index];
+
+        return contact.messages[(contact.messages.length - 1)].hour;
+      },
+
       searchUser: function() {
 
         if (this.searchUsers == '') {
@@ -270,7 +282,6 @@ function init() {
         message.text = 'Hai eliminato questo messaggio';
       }
     },
-    
   });
 }
 
