@@ -12,8 +12,6 @@ function init() {
 
       message: '',
 
-      newMessage: {},
-
       defaultAnswere: {
         text: 'Ok',
         status: 'received',
@@ -157,7 +155,7 @@ function init() {
 
         const time = this.thisHour();
 
-        this.newMessage = {
+        const newMessage = {
           optionsDisplay: '',
           date: '',
           hour: time,
@@ -165,28 +163,34 @@ function init() {
           status: 'sent'
         };
 
-        this.activeUser.messages.push(this.newMessage);
+        this.activeUser.messages.push(newMessage);
         this.message = '';
 
         this.defaultAnswere.hour = time;
 
+        const thisUser = this.activeUser;
+
         setTimeout(() => {
 
-          this.activeUser.lastEntry = 'Online';
+          thisUser.lastEntry = 'Online';
           
         }, 1000);
 
         setTimeout(() => {
 
-          this.activeUser.messages.push(this.defaultAnswere);
+          thisUser.messages.push(this.defaultAnswere);
           
         }, 2000);
 
         setTimeout(() => {
 
-          this.activeUser.lastEntry = 'Ultimo accesso oggi alle ' + time;
+          thisUser.lastEntry = 'Ultimo accesso oggi alle ' + time;
           
         }, 3000);
+
+        console.log(this.activeUser.messages);
+
+        
       },
 
       searchUser: function() {
@@ -222,6 +226,8 @@ function init() {
         const message = messages[index];
 
         message.optionsDisplay = 'options-block';
+
+        console.log(message);
       },
 
       deleteMessage: function(index) {

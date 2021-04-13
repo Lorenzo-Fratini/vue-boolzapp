@@ -36,7 +36,7 @@
           </div>
 
           <div class="contact-filter">
-            <input type="text" class="filter" v-model="searchUsers" @keyup.enter="searchUser" placeholder="Cerca o inizia una nuova chat">
+            <input type="text" class="filter" v-model="searchUsers" @keyup="searchUser" placeholder="Cerca o inizia una nuova chat">
           </div>
 
           <div class="contacts">
@@ -73,7 +73,7 @@
 
           <div class="message-main">
             <div v-for="(mess, index) in activeUser.messages">
-              
+              <!-- generazione messaggi -->
               <div :class="mess.status == 'sent' ? 'user-message-cont' : 'speker-message-cont'">
                 <div :class="mess.text == 'Hai eliminato questo messaggio' ? 'message-cloud deleteMessage' : 'message-cloud'">
                   {{ mess.text }}
