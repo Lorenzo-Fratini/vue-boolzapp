@@ -12,6 +12,8 @@ function init() {
 
       message: '',
 
+      currentDate: '',
+
       displayClass: '',
 
       contacts: [
@@ -114,7 +116,7 @@ function init() {
         {
           name: 'Chiara',
           avatar: 'female2.png',
-          lastEntry: 'oggi alle 08:35',
+          lastEntry: 'Ultimo accesso oggi alle 08:35',
           visible: true,
           messages: [
               {
@@ -222,15 +224,24 @@ function init() {
       lastMessage: function(index) {
 
         const contact = this.contacts[index];
+        const lastItem = contact.messages[(contact.messages.length - 1)];
 
-        return contact.messages[(contact.messages.length - 1)].text;
+        return lastItem.text;
       },
 
-      lastHour: function(index) {
+      lastDate: function(index) {
 
         const contact = this.contacts[index];
+        const lastItem = contact.messages[(contact.messages.length - 1)];
 
-        return contact.messages[(contact.messages.length - 1)].hour;
+        if (lastItem.date == this.currentDate) {
+          
+          return lastItem.hour;
+        } else {
+          
+          return lastItem.date;
+        }
+        
       },
 
       searchUser: function() {
@@ -282,6 +293,11 @@ function init() {
         message.text = 'Hai eliminato questo messaggio';
       }
     },
+
+    mounted() {
+
+      this.currentDate = this.thisDate();
+    }
   });
 }
 
