@@ -194,8 +194,6 @@ function init() {
         const time = this.thisHour();
         const date = this.thisDate();
 
-        this.currentDate = date;
-
         const newMessage = {
           optionsDisplay: '',
           date: date,
