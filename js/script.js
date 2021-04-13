@@ -14,6 +14,10 @@ function init() {
 
       displayClass: '',
 
+      currentDate: '',
+
+      lastMessage: '',
+
       contacts: [
         {
           name: 'Marco',
@@ -124,8 +128,7 @@ function init() {
               }
           ],
         },
-    ]
-      
+      ]
     },
 
     methods: {
@@ -137,30 +140,28 @@ function init() {
         this.displayClass = 'display-none';
       },
 
+      thisDate: function() {
+        const current = new Date();
+        const currentStr = ('0' + current.getDate()).slice(-2) + '/'
+                      + ('0' + current.getMonth()).slice(-2) + '/'
+                      + current.getFullYear() + ' ';
+        
+        this.currentDate = currentStr;
+      },
+
       thisHour: function() {
 
         const current = new Date();
-        const time = ('0' + current.getHours()).slice(-2) + ":" + ('0' + current.getMinutes()).slice(-2);
+        const time = ('0' + current.getHours()).slice(-2) + ":" 
+                      + ('0' + current.getMinutes()).slice(-2);
 
         return time
       },
 
-      newMessageGen: function(message) {
-
-        const time = this.thisHour();
-
-        const newMessage = {
-          optionsDisplay: '',
-          date: '',
-          hour: time,
-          text: this.message,
-          status: 'sent'
-        };
-
-        this.activeUser.messages.push(newMessage);
-        this.message = '';
+      defaultAnswereGen: function() {
 
         const thisUser = this.activeUser;
+        const time = this.thisHour();
 
         let defaultAnswere = {
           optionsDisplay: '',
@@ -187,11 +188,26 @@ function init() {
 
           thisUser.lastEntry = 'Ultimo accesso oggi alle ' + time;
           
-        }, 3000);
+        }, 3000);      
+      },
 
-        console.log(this.activeUser.messages);
+      newMessageGen: function(message) {
 
-        
+        const time = this.thisHour();
+        const date = this.thisDate();
+
+        const newMessage = {
+          optionsDisplay: '',
+          date: date,
+          hour: time,
+          text: this.message,
+          status: 'sent'
+        };
+
+        this.activeUser.messages.push(newMessage);
+        this.message = '';
+
+        this.defaultAnswereGen();
       },
 
       searchUser: function() {
@@ -226,9 +242,12 @@ function init() {
         const messages = this.activeUser.messages;
         const message = messages[index];
 
-        message.optionsDisplay = 'options-block';
+        messages.forEach(message => {
+           
+          message.optionsDisplay = '';
+        });
 
-        console.log(message);
+        message.optionsDisplay = 'options-block';
       },
 
       deleteMessage: function(index) {
@@ -238,7 +257,13 @@ function init() {
         message.optionsDisplay = '';
         message.text = 'Hai eliminato questo messaggio';
       }
+    },
+
+    beforeMount() {
+      
+      this.thisDate()
     }
+    
   });
 }
 

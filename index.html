@@ -46,6 +46,15 @@
                   <img :src="'img/' + contact.avatar" alt="Profile image" class="contact-img">
                   <div class="info-cont">
                     <h4>{{ contact.name }}</h4>
+                    <span>
+                      {{ contact.messages[(contact.messages.length - 1)].text }}
+                    </span>
+                    <span v-if="contact.messages[(contact.messages.length - 1)].date == this.currentDate" class="last-message-date">
+                      {{ contact.messages[(contact.messages.length - 1)].hour }}
+                    </span>
+                    <span v-else class="last-message-date">
+                      {{ contact.messages[(contact.messages.length - 1)].date }}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -54,9 +63,8 @@
 
         </div>
 
-        <!-- right-cont -->
+        <!-- message-cont -->
         <div class="message-cont">
-
           <div class="message-head">
             <div class="active-user">
               <img :src="'img/' + activeUser.avatar" alt="Profile image" class="contact-img">
@@ -72,8 +80,8 @@
           </div>
 
           <div class="message-main">
+            <!-- message-gen -->
             <div v-for="(mess, index) in activeUser.messages">
-              <!-- generazione messaggi -->
               <div :class="mess.status == 'sent' ? 'user-message-cont' : 'speker-message-cont'">
                 <div :class="mess.text == 'Hai eliminato questo messaggio' ? 'message-cloud deleteMessage' : 'message-cloud'">
                   {{ mess.text }}
@@ -85,13 +93,11 @@
                     </div>
                     <div :class="'options-menu ' +  mess.optionsDisplay">
                       <ul>
-                        <li>Info messaggio</li>
                         <li @click="deleteMessage(index)">Elimina messaggio</li>
                       </ul>
                     </div>
                 </div>
               </div>
-
             </div>
           </div>
 
