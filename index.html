@@ -39,6 +39,7 @@
             <input type="text" class="filter" v-model="searchUsers" @keyup="searchUser" placeholder="Cerca o inizia una nuova chat">
           </div>
 
+          <!-- contact-gen -->
           <div class="contacts">
             <div v-for="(contact, index) in contacts">
               <div v-if="contact.visible == true">
@@ -50,7 +51,7 @@
                       {{ contact.messages[(contact.messages.length - 1)].text }}
                     </span>
                     <span class="last-message-date">
-                      {{ contact.messages[(contact.messages.length - 1)].date }} {{ contact.messages[(contact.messages.length - 1)].hour }}
+                      {{ contact.messages[(contact.messages.length - 1)].hour }}
                     </span>
                   </div>
                 </div>
