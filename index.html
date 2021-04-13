@@ -49,11 +49,8 @@
                     <span>
                       {{ contact.messages[(contact.messages.length - 1)].text }}
                     </span>
-                    <span v-if="contact.messages[(contact.messages.length - 1)].date == this.currentDate" class="last-message-date">
-                      {{ contact.messages[(contact.messages.length - 1)].hour }}
-                    </span>
-                    <span v-else class="last-message-date">
-                      {{ contact.messages[(contact.messages.length - 1)].date }}
+                    <span class="last-message-date">
+                      {{ contact.messages[(contact.messages.length - 1)].date }} {{ contact.messages[(contact.messages.length - 1)].hour }}
                     </span>
                   </div>
                 </div>

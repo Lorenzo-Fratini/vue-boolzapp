@@ -14,8 +14,6 @@ function init() {
 
       displayClass: '',
 
-      currentDate: '',
-
       lastMessage: '',
 
       contacts: [
@@ -142,11 +140,11 @@ function init() {
 
       thisDate: function() {
         const current = new Date();
-        const currentStr = ('0' + current.getDate()).slice(-2) + '/'
+        const date = ('0' + current.getDate()).slice(-2) + '/'
                       + ('0' + current.getMonth()).slice(-2) + '/'
                       + current.getFullYear() + ' ';
         
-        this.currentDate = currentStr;
+        return date;
       },
 
       thisHour: function() {
@@ -162,15 +160,15 @@ function init() {
 
         const thisUser = this.activeUser;
         const time = this.thisHour();
+        const date = this.thisDate();
 
-        let defaultAnswere = {
+        const defaultAnswere = {
           optionsDisplay: '',
+          date: date,
+          hour: time,
           text: 'Ok',
           status: 'received',
-          hour: ''
         };
-
-        defaultAnswere.hour = time;
 
         setTimeout(() => {
 
@@ -191,10 +189,12 @@ function init() {
         }, 3000);      
       },
 
-      newMessageGen: function(message) {
+      newMessageGen: function() {
 
         const time = this.thisHour();
         const date = this.thisDate();
+
+        this.currentDate = date;
 
         const newMessage = {
           optionsDisplay: '',
@@ -258,11 +258,6 @@ function init() {
         message.text = 'Hai eliminato questo messaggio';
       }
     },
-
-    beforeMount() {
-      
-      this.thisDate()
-    }
     
   });
 }
