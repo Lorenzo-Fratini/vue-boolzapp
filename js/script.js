@@ -12,12 +12,6 @@ function init() {
 
       message: '',
 
-      defaultAnswere: {
-        text: 'Ok',
-        status: 'received',
-        hour: ''
-      },
-
       displayClass: '',
 
       contacts: [
@@ -166,9 +160,16 @@ function init() {
         this.activeUser.messages.push(newMessage);
         this.message = '';
 
-        this.defaultAnswere.hour = time;
-
         const thisUser = this.activeUser;
+
+        let defaultAnswere = {
+          optionsDisplay: '',
+          text: 'Ok',
+          status: 'received',
+          hour: ''
+        };
+
+        defaultAnswere.hour = time;
 
         setTimeout(() => {
 
@@ -178,7 +179,7 @@ function init() {
 
         setTimeout(() => {
 
-          thisUser.messages.push(this.defaultAnswere);
+          thisUser.messages.push(defaultAnswere);
           
         }, 2000);
 
