@@ -80,7 +80,7 @@
             <!-- message-gen -->
             <div v-for="(mess, index) in activeUser.messages">
               <div :class="mess.status == 'sent' ? 'user-message-cont' : 'speker-message-cont'">
-                <div :class="mess.text == 'Hai eliminato questo messaggio' ? 'message-cloud deleteMessage' : 'message-cloud'">
+                <div :class="mess.deleted == true ? 'message-cloud deleteMessage' : 'message-cloud'">
                   {{ mess.text }}
                     <div class="message-hour">
                       {{ mess.hour }}
